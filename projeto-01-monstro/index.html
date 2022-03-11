@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Matador de Monstro</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,600" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+<body>
+    <div id="app">
+        <div class="panel scores">
+            <div class="score">
+                <h1>Jogador</h1>
+                <div class="life-bar">
+                    <div class="life" :class="{danger: showDangerPlayer}" :style="{width: showScorePlayer }"></div> 
+                    {{ showScorePlayer }}
+                </div>
+                <div></div>
+            </div>
+            <div class="score">
+                <h1>Monstro</h1>
+                <div class="life-bar">
+                    <div class="life" :class="{danger: showDangerMonster}" :style="{width: showScoreMonster}"></div>
+                    {{ showScoreMonster }}
+                </div>
+                <div></div>
+            </div>
+        </div>
+        <div class="panel result">
+            <div class="win" v-if="winnerPlayer">Você ganhou!!! :)</div>
+            <div class="lose" v-if="winnerMonster">Você perdeu! :(</div>
+        </div>
+        <div class="panel buttons">
+            <template v-if="startGame">
+                <button class="btn attack" @click="attack">Ataque</button>
+                <button class="btn especial-attack" @click="attackEpecial">Ataque Especial</button>
+                <button class="btn heal" @click="cure">Curar</button>
+                <button class="btn give-up" @click="quitGame">Desistir</button>
+            </template>
+            <button class="btn new-game" v-if="!startGame" @click="initialGame">Iniciar Jogo</button>
+        </div>
+        <div class="panel logs">
+            <ul v-for="item in log">
+                <li :class="[{player : item.isPlayer}, {monster : !item.isPlayer}]">
+                     {{showTitleMessage(item.isPlayer, item.cure)}} {{item.score}} 
+                    </li>
+            </ul>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
