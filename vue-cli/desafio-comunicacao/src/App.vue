@@ -27,8 +27,7 @@ export default {
 	methods:{
 		detail(value){
 			this.usuario = value;
-			 
-		}
+		},
 	}
 }
 </script>
