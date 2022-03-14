@@ -5,8 +5,10 @@
 			<button @click="clickComponents('Green')" class="verde">Carregar Componente Verde</button>
 			<button @click="clickComponents('Blue')" class="azul">Carregar Componente Azul</button>
 		</span>
-		<component :is="nameComponents"> <slot> {{ translator(nameComponents) }} </slot> </component>
-		
+		<keep-alive>
+			<component :is="nameComponents"> <slot> {{ translator(nameComponents) }} </slot> </component>
+		</keep-alive>
+
 	</div>
 </template>
 
