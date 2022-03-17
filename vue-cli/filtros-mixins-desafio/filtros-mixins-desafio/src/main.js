@@ -4,7 +4,7 @@ import App from './App.vue'
 Vue.config.productionTip = false
 Vue.filter('count', function (value) {
 	return value.split(' ').map(element => 
-	 `${element} (${element.length})`
+	`${element} (${element.length})`
 	).join(' ');
 })
 new Vue({
