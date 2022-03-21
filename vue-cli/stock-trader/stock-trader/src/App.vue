@@ -1,10 +1,24 @@
 <template>
-	<h1>Stock Trader</h1>
+	<div>
+		<v-app id="inspire">
+			
+			<v-header />
+			<v-content>	
+				<router-view />
+			</v-content>
+		</v-app>
+	</div>
 </template>
 
 <script>
-export default {
+import Header from './components/Header.vue';
+import Content from './components/Content.vue';
 
+export default {
+	components:{
+		'v-header': Header,
+		'v-content': Content,
+	}
 }
 </script>
 
