@@ -47,6 +47,14 @@ export default {
 
       })
 
+      this.$http.get('stock.json').then(resp => {
+        const { data } = resp;
+        const stockPortfolio = Object.values(data)[0]
+        const format = Object.values(stockPortfolio)[0]
+        this.$store.state.stock = format;
+
+      })
+
       this.$http.get('liquidate.json').then(resp => {
         const { data } = resp;
         const liquidate = Object.values(data)[0]
